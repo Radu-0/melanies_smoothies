@@ -45,7 +45,7 @@ if ingredients_list:
         st.subheader(fruit + ' Nutrition information')
         fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+fruit)
         # if fruityvice_response == 200:
-            fv_df=st.dataframe(data=fruityvice_response.json(), use_container_width=True)
+        fv_df=st.dataframe(data=fruityvice_response.json(), use_container_width=True)
         #st.write("https://fruityvice.com/api/fruit/"+fruit)
     
     button_submit=st.button('Submit Order')
