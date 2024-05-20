@@ -34,13 +34,14 @@ if ingredients_list:
         fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+fruit)
         fv_df=st.dataframe(data=fruityvice_response.json(), use_container_width=True)
         st.write("https://fruityvice.com/api/fruit/"+fruit)
-button_submit=st.button('Submit Order')
-if button_submit:
-    my_insert_stmt = """ insert into smoothies.public.orders(ingredients,name_on_order)
+    
+    button_submit=st.button('Submit Order')
+    if button_submit:
+        my_insert_stmt = """ insert into smoothies.public.orders(ingredients,name_on_order)
             values ('""" + ingredients_string + """' , '""" + smoothie_name + """')"""
-    st.write(my_insert_stmt)
-    session.sql(my_insert_stmt).collect()
-    st.success('Your Smoothie is ordered! ' + smoothie_name, icon="✅")
+        st.write(my_insert_stmt)
+        session.sql(my_insert_stmt).collect()
+        st.success('Your Smoothie is ordered! ' + smoothie_name, icon="✅")
 
 # fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
 # st.text(fruityvice_response.json())
